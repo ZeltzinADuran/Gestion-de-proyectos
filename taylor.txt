@@ -1,0 +1,114 @@
+taylor.java
+Evaluar una funcion trigonometrica senoidal empleando la serie de taylor, evaluada en f(0)
+
+Sipnosis
+Implementar un codigo en un lenguaje de programacion que resuelva una funcion trigonometrica senoidal empleando 
+la serie de taylor evaluada en la decimo tercera derivad.
+
+
+Descripcion
+El programa realizado resuelve una funcion  senoidal con un numero que es ingresado mediante teclado y que es definido por el usuario mostrando el resultado de manera consola.
+donde:
+1.	n! es el factorial de n
+2.	 f (n)(a) denota la n-ésima derivada de f para el valor a de la variable respecto de la cual se deriva.
+3.	La derivada de orden cero de f es definida como la propia f y tanto (x - a)0 como   son ambos definidos como 1 ( = 1).
+4.	 En caso de ser a = 0, como ya se mencionó, la serie se denomina también de McLaurin
+
+
+OBJETIVO
+Desarrollar un programa que evalué una función trigonométrica senoidal empleando un lenguaje de programación haciendo uso de la serie de Taylor evaluando en la décima tercera  derivada.
+
+
+ALCANCES Y LIMITACIONES.
+
+ALCANCES
+
+*desarrollar un programa en un lenguaje de programación.
+*Evaluar una derivada.
+*Es posible ingresar valores mediante teclado.
+*Calculo de seno.
+
+
+LIMITACIONES
+
+*El grado n=13
+*Bugs
+
+EVALUACION
+Sin aplicar redondeo con una resolución de 5 digitos.
+
+
+DESARROLLO
+
+Codigo:
+package seno_taylor;
+
+
+/**fuente:
+ * UNIVERSIDAD TECONOLOGICA DE PUEBLA 
+ * PUBLICADO 28 DE AGOSTO DE 2017
+ * MECHANICAL && ELECTRICITY && ELECTRONIC.
+http://www.youtube.be/HBa8xPFZKyl
+
+*/
+
+package seno_taylor;
+
+//Liberia facilita la lectura de datoss.
+import java.util.Scanner;
+//seno_taylor es el nombre de la clase la cual es una clase publica.
+public class Seno_taylor {
+
+  
+    public static void main(String[] args) {
+        
+         Scanner ingreso = new Scanner(System.in);
+         //numero de tipo double, declaracion de la variable x
+          double sen=0; double x; int numero;
+ //se solicta que el usuario ingrese el valor y factorial donde los valores que se ingresen se guardaran en las variables x numero.
+     System.out.println("Ingrese el valor:");          
+            x = Double.parseDouble(ingreso.nextLine());     
+     System.out.println("Ingrese el factorial:");       
+            numero = Integer.parseInt(ingreso.nextLine()); 
+ //int es un numero entero que sera igual a 1
+  int i=1; 
+         //si i es menor que la variable numero se realiza la operacion.
+         while(i<=numero){
+              int fact = 1;
+              int j=1;
+                while(j<=(1+(2*(i-1)))){
+                     fact= fact*j;
+                     j++;
+                 }
+                
+                  if(i%2==0)
+                          sen = sen - (Math.pow(x,(1+(2*(i-1)))) /fact);    
+                 else
+                         sen = sen + (Math.pow(x,(1+(2*(i-1)))) /fact); 
+              i++;
+           }  
+           System.out.println("El resultado es: " +x+ " y " +sen);
+    }
+    private static boolean isNumeric(String cadena) {
+        try {
+            Integer.parseInt(cadena);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
+
+    
+}
+ciclo de vida:lineal secuencial
+
+
+
+
+Autor
+Antonio Duran Zeltzin Andrea
+
+Tel. 5534689195
+
+correo zeltzinantoniod@gmail.com
+direccion Estado de mexico Chalco

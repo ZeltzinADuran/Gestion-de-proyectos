@@ -1,0 +1,259 @@
+zeltzin.java
+Realizar un programa que permita calcular y mostrar en consola la resolucion de un polinomio de forma ax^2+bx+x=0.
+
+Sipnosis
+Implementar un codigo para la resolucion de este polinomio en un lenguaje de programacion resolviendo el polinomio de la forma ax^2+bx+x=0 obteniendo el resultado que posteriormente sera evaluado para decidir que caso puede resolverlo.
+
+Descrpcion.
+El programa esta predeterminado para resolver la funcion ax^2+bx+x=0 con numeros enteros y reales que son ingresados mediante el teclado donde el valor es definido por el usuario eligiendo un caso y obteniendo el resultado en modo consola.
+
+ANALISIS
+ 
+vector 
+
+
+si  ?=b2-4ac
+
+si  ?>0 entonces CASO I
+
+si  ?=0 entonces CASO II
+
+si  ?<0 entonces CASO III
+
+
+OBJETIVO
+
+Realizar un programa que permita calcular las raices de un polinomio de forma ax^2+bx+c=0 dado los coeficientes
+{a,b,c} donde a?0, si el valor definido para los valores de b y c se toman como 1 se realiza el 
+calculo de ? para obtener un resultado comparandolo si es (>,=,<), dado el resultado de ? clasificarlo en tres posibles 
+casos.
+
+ALCANCES Y LIMITACIONES 
+
+ALCANCES
+Realizar un programa que permita calcular raices.
+Raices lineales conjugadas.
+Raices con numeros reales.
+Hacer uso del metodo static.
+Realizar el programa con metodos.
+
+LIMITACIONES
+
+Validacion de entrada.
+Raiz real.
+Raiz real compleja.
+
+PROCESO DE UNIFICACION.
+/**FUENTE
+ * AUTOR:HUGO  ALBERTO RIVERA DIAZ
+ * NOMBRE DE USUARIO:HUGO ALBERTO RIVERA DIAZ
+ * FECHA DE PUBLICACION:12 DE AGOSTO 2016
+ * TITULO DE VIDEO:ECUACIÓN CUADRÁTICA EN JAVA - 
+ * Solución de Ecuación de Segundo Grado - 
+ * Programación en Java
+ * URL:https://www.youtube.com/watch?v=Qs4K4zhpKQ8
+ * 
+ * AUTOR:JORGE
+ * NOMBRE DE USUARIO:LATINCODER
+ * FECHA DE PUBLICACION:16 DE MAYO 2014
+ * TITULO DE VIDEO:try, catch y finally (Manejo de excepciones) - Tutorial Java
+ * URL:https://www.youtube.com/watch?v=mCmu7Ps55Dc
+ * 
+ * AUTOR:JOSE DANIEL MALDONADO
+ * NOMBRE DE USUARIO:JOSE DANIEL MALDONADO
+ * FECHA DE PUBLICACION: 5 DE MARZO 2016
+ * TITULO DE VIDEO:Resolvente para ecuaciones de 2do grado( Real e Imaginaria) JAVA
+ * URL:https://www.youtube.com/watch?v=sLROmQwebcQ
+ * 
+ */
+
+
+package zeltzin;
+
+import java.util.Scanner;
+//import jdk.nashorn.internal.runtime.JSType;
+
+public class Zeltzin {
+//se pide que el usuario ingrese un valor dependiendo del caso.
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        Scanner teclado2 = new Scanner(System.in);
+        int i = 1, opc = 0;
+        float a = 0, b = 0, n = 0, c = 0, m = 0, x = 0;
+//menu que pide los valores de caso 1 2 y 3
+        System.out.println("1.- CASO 1");
+        System.out.println("2.- CASO 2");
+        System.out.println("3.- CASO 3");
+       
+        opc = teclado2.nextInt();
+//la primera opcion conciste en conoceer si el valor es igual a  1
+        if (opc == 1) {
+            while (i == 1) {
+                System.out.println("Ingresa el valor de a:");
+                String a2 = teclado.nextLine();
+
+                if (isNumeric(a2) == true) {
+                    a = Float.parseFloat(a2);
+                    i = 2;
+                } else if (isNumeric(a2) == false) {
+                    System.out.println("Ingrese un valor valido  a\n");
+                }
+            }
+            // se selcciona la opcion dos del menu
+            while (i == 2) {
+                System.out.println("Ingresa el valor de b:");
+                String b2 = teclado.nextLine();
+
+                if (isNumeric(b2) == true) {
+                    b = Float.parseFloat(b2);
+                    i = 3;
+                } else if (isNumeric(b2) == false) {
+                    System.out.println("Ingrese un valor valido\n");
+                }
+            }
+            // se selcciona la opcion tres del menu
+            while (i == 3) {
+                System.out.println("Ingresa el valor de c:");
+                String c2 = teclado.nextLine();
+
+                if (isNumeric(c2) == true) {
+                    c = Float.parseFloat(c2);
+                    i = 7;
+                } else if (isNumeric(c2) == false) {
+                    System.out.println("Ingrese un valor valido\n");
+                }
+            }
+            float delta = 0;
+
+            delta = (float) ((Math.pow(b, 2)) - (4 * a * c));
+//el resultado es mayor que cero
+            if (delta > 0) {
+                float res1cas;
+                float res2cas;
+                res1cas = (float) ((-b + (Math.sqrt(delta))) / (2 * a));
+                res2cas = (float) ((-b - (Math.sqrt(delta))) / (2 * a));
+
+                System.out.println("Caso 1");
+                System.out.println("resultado 1: " + res1cas + " resultado 2: " + res2cas);
+            }
+            //el resultado es igual a 0
+            if (delta == 0) {
+                float rescas2;
+                rescas2 = -b / 2 * a;
+                System.out.println("Caso 2");
+                System.out.println("resultado: " + rescas2);
+            }
+            //el resultado es menor que cero
+            if (delta < 0) {
+                float res1cas3;
+                float res2cas3;
+
+                res1cas3 = (-b / 2 * a);
+                res2cas3 = (float) ((Math.sqrt(delta * -1)) / (2 * a));
+
+                System.out.println("Caso 3");
+                System.out.println("resultado 1: " + res1cas3 + " + " + res2cas3 + "i");
+                System.out.println("resultado 2: " + res1cas3 + " - " + res2cas3 + "i");
+            }
+        }
+        else if (opc == 2) {
+            i = 4;
+            while (i == 4) {
+                System.out.println("Ingresa el valor de n");
+                String n2 = teclado.nextLine();
+
+                if (isNumeric(n2) == true) {
+                    n = Float.parseFloat(n2);
+                    i = 5;
+                } else if (isNumeric(n2) == false) {
+                    System.out.println("Ingrese un valor valido\n");
+                }
+            }
+            while (i == 5) {
+                System.out.println("Ingrese el valor de m");
+                String m2 = teclado.nextLine();
+
+                if (isNumeric(m2) == true) {
+                    m = Float.parseFloat(m2);
+                    i = 7;
+                } else if (isNumeric(m2) == false) {
+                    System.out.println("Ingrese un valor valido\n");
+                }
+            }
+            float resultado1positivo;
+            float resultado2negativo;
+            resultado1positivo = (float) ((-m / 2) + (Math.sqrt(Math.pow(m, 2)) / 4) - n);
+            resultado2negativo = (float) ((-m / 2) - (Math.sqrt(Math.pow(n, 2)) / 4) - n);
+            System.out.println("Caso 4");
+            System.out.println("resultado1: " + resultado1positivo);
+            System.out.println("resultado2: " + resultado2negativo);
+        }
+
+        else if (opc == 3) {
+            i = 4;
+            while (i == 4) {
+                System.out.println("Ingresa el valor de n");
+                String n2 = teclado.nextLine();
+
+                if (isNumeric(n2) == true) {
+                    n = Float.parseFloat(n2);
+                    i = 5;
+                } else if (isNumeric(n2) == false) {
+                    System.out.println("Ingrese un valor valido\n");
+                }
+            }
+            while (i == 5) {
+                System.out.println("Ingrese el valor de m");
+                String m2 = teclado.nextLine();
+
+                if (isNumeric(m2) == true) {
+                    m = Float.parseFloat(m2);
+                    i = 6;
+                } else if (isNumeric(m2) == false) {
+                    System.out.println("Ingrese un valor valido\n");
+                }
+            }
+
+            while (i == 6) {
+                System.out.println("Ingrese el valor de x");
+                String x2 = teclado.nextLine();
+
+                if (isNumeric(x2) == true) {
+                    x = Float.parseFloat(x2);
+                    i = 7;
+                } else if (isNumeric(x2) == false) {
+                    System.out.println("Ingrese un valor valido\n");
+               
+                }
+                // 
+            }
+            float resul1;
+            float resul2;
+            resul1 = (float) ((Math.pow(x, 2) + m * n + n));
+            resul2 = (float) ((Math.pow(x, 2) - m * n - n));
+            System.out.println("Caso 5");
+            System.out.println("resultado1" + resul1);
+            System.out.println("resultado2" + resul2);
+        }
+        else{
+            System.out.println("Elija una opcion valida del menu");
+        }
+
+    }
+/*este metodo se usa para comprobar si el dato que se ingreso es un numero
+    si es un numero devulev como resultado un true y si es falso un false si e s
+    verdadero procede a hacer la operacion si no manda un mensaje de "elija una opcion valida del menu"
+   */
+    private static boolean isNumeric(String cadena) {
+        try {
+            Integer.parseInt(cadena);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
+
+}
+
+
+
